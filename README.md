@@ -1,6 +1,7 @@
 ## About
 
-Implementation of gologs/log/levels Interface that pipes messages to [glog](https://godoc.org/github.com/golang/glog).
+Implementation of gologs/log/levels [Interface](https://godoc.org/github.com/gologs/log/levels#Interface)
+that pipes messages to [glog](https://godoc.org/github.com/golang/glog).
 
 ## Demo
 
