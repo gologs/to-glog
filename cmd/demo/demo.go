@@ -26,7 +26,7 @@ import (
 
 func main() {
 	flag.Parse()                    // required by glog
-	config.Default = toglog.Default // pipe gologs to glog
+	config.Logging = toglog.Default // pipe gologs to glog
 
 	log.Debugf("this is debug")
 	log.Infof("this is info")

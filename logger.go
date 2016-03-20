@@ -44,6 +44,13 @@ func (x *adapter) Debugf(m string, a ...interface{}) {
 	}
 }
 
+// Debug invokes glog.V(1).Info
+func (x *adapter) Debug(a ...interface{}) {
+	if glog.V(1) {
+		glog.InfoDepth(x.callerDepth, a...)
+	}
+}
+
 // Infof invokes glog.Info
 func (x *adapter) Infof(m string, a ...interface{}) {
 	if m == "" {
@@ -51,6 +58,11 @@ func (x *adapter) Infof(m string, a ...interface{}) {
 	} else {
 		glog.InfoDepth(x.callerDepth, fmt.Sprintf(m, a...))
 	}
+}
+
+// Info invokes glog.Info
+func (x *adapter) Info(a ...interface{}) {
+	glog.InfoDepth(x.callerDepth, a...)
 }
 
 // Warnf invokes glog.Warning
@@ -62,6 +74,11 @@ func (x *adapter) Warnf(m string, a ...interface{}) {
 	}
 }
 
+// Warn invokes glog.Warning
+func (x *adapter) Warn(a ...interface{}) {
+	glog.WarningDepth(x.callerDepth, a...)
+}
+
 // Errorf invokes glog.Error
 func (x *adapter) Errorf(m string, a ...interface{}) {
 	if m == "" {
@@ -69,6 +86,11 @@ func (x *adapter) Errorf(m string, a ...interface{}) {
 	} else {
 		glog.ErrorDepth(x.callerDepth, fmt.Sprintf(m, a...))
 	}
+}
+
+// Error invokes glog.Error
+func (x *adapter) Error(a ...interface{}) {
+	glog.ErrorDepth(x.callerDepth, a...)
 }
 
 // Fatalf invokes glog.Exit
@@ -80,6 +102,11 @@ func (x *adapter) Fatalf(m string, a ...interface{}) {
 	}
 }
 
+// Fatalf invokes glog.Exit
+func (x *adapter) Fatal(a ...interface{}) {
+	glog.ExitDepth(x.callerDepth, a...)
+}
+
 // Panicf deviates from the intent of the interface: it doesn't panic but instead
 // invokes glog.Fatal
 func (x *adapter) Panicf(m string, a ...interface{}) {
@@ -88,4 +115,10 @@ func (x *adapter) Panicf(m string, a ...interface{}) {
 	} else {
 		glog.FatalDepth(x.callerDepth, fmt.Sprintf(m, a...))
 	}
+}
+
+// Panic deviates from the intent of the interface: it doesn't panic but instead
+// invokes glog.Fatal
+func (x *adapter) Panic(a ...interface{}) {
+	glog.FatalDepth(x.callerDepth, a...)
 }
